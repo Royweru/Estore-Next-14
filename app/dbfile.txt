@@ -1,0 +1,72 @@
+ model Category{
+  id String @id @default(uuid())
+  products Product[] 
+  name String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt 
+ }
+
+ model Size{
+  id String @id @default(uuid())
+  products Product[]
+  name String
+  value String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt 
+ }
+
+
+  model Product{
+    id String @id @default(uuid())
+    categoryId String
+    category Category @relation(fields: [categoryId],references: [id])
+    orderItems OrderItem[]
+    name String
+    description string
+    price Decimal
+    isFeatured Boolean @default(false)
+    isArchived Boolean @default(false)
+    sizeId String
+    size Size @relation(fields: [sizeId],references: [id])
+    color String?
+    images Image[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+  }
+
+ 
+  model Image{
+    id String @id @default(uuid())
+    productId String
+    product Product @relation(fields: [productId],references: [id],onDelete: Cascade)
+    url String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+  }
+
+  model Order{
+    id String @id @default(uuid())
+    orderItems OrderItem[]
+    isPaid Boolean @default(false)
+    phone String @default("")
+    adress String @default("")
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+  }
+
+  model OrderItem{
+    id String @id @default(uuid())
+    orderId String
+    order Order @relation(fields: [orderId],references: [id])
+    productId String
+    product Product @relation(fields: [productId],references: [id])
+
+
+   @@index([productId])
+   @@index([orderId])
+  }
