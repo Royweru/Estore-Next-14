@@ -1,12 +1,14 @@
 "use client"
-import { Product } from '@/types'
+import { Image as ImageType, Product } from '@prisma/client'
 import Image from 'next/image'
 import React from 'react'
 
 export const ProductCard = ({
     data
 }:{
-    data:Product
+    data:Product &{
+      images:ImageType[]
+    }
 }) => {
   return (
     <div 
@@ -18,13 +20,13 @@ export const ProductCard = ({
             <div className=' w-full lg:h-[280px] md:h-[220px] h-[200px] relative group'>
              <Image
               fill
-              src={data.thumbnail}
+              src={data.images[0].url}
               className=' bg-cover bg-center group-hover:hidden'
               alt={data.name}
               />
              <Image
               fill
-              src={data?.images[0]}
+              src={data?.images[1].url}
               className='bg-cover bg-center group-hover:block hidden'
               alt={data.name}
               />
@@ -41,7 +43,7 @@ export const ProductCard = ({
                   <span className=' text-sm text-neutral-black font-normal mr-3'>
                   $
                   </span>
-                {data.price.toLocaleString('en')}
+                {data.price.toLocaleString()}
                  </h3>
               </div>
             </div>

@@ -3,11 +3,11 @@ import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 export async function GET(
-  req: Request
+  
 ) {
   try {
     const { userId } = await auth();
-    if (!userId) return new NextResponse("Unauthorized");
+    if (!userId) return new NextResponse("Unauthorized",{status:401});
     const res = await db.category.findMany({
       include: {
         products: true,
