@@ -1,20 +1,25 @@
 
 import React from "react";
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
-import { Items } from "@/data/bento-items";
+import { Product } from "@/types";
 
+
+interface FeatureGridProps{
+  products:Product[]
+}
 
 export function FeatureGrid(
+  {products}:FeatureGridProps
 ) {
   return (
     <BentoGrid className="max-w-4xl mx-auto md:auto-rows-[20rem]">
-      {Items.map((item, i) => (
+      {products.slice(0,4).map((item, i) => (
         <BentoGridItem
           key={i}
-          title={item.title}
+          title={item.name}
           description={item.description}
-          className={item.className}
-           thumbnail={item.thumbnail}
+          className={""}
+           thumbnail={item.images[0].url}
         />
       ))}
     </BentoGrid>

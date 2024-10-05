@@ -264,7 +264,7 @@ export const Navbar2Defaults: Navbar2Props = {
       title: "Shop by",
       url: "#",
       subMenuLinks: [
-        { title: "All", url: "#" },
+        { title: "All", url: "/browse" },
         { title: "T-shirts", url: "#" },
         { title: "Hoodies", url: "#" },
         { title: "Toppers", url: "#" },

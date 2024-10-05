@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images:{
-    domains:['encrypted-tbn0.gstatic.com',]
+    domains:['encrypted-tbn0.gstatic.com','m.media-amazon.com','taftclothing.com','i.pinimg.com']
   },
     async headers() {
         return [

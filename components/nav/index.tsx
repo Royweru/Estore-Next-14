@@ -19,7 +19,7 @@ if(!mounted) return null
     <div className={cn(' w-full relative',
       isHidden && 'hidden'
     )}>
-       <NavHeader />
+       
        <MainNav /> 
     </div>
   )

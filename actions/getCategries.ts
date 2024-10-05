@@ -11,7 +11,22 @@ export const GetCategories =async () => {
             }
         }
     })
-    return res
+     const modifiedCategories  =res.map((result)=>{
+       const modifiedProducts =  result.products.map((product)=>{
+            const numberPrice = product.price.toNumber()
+            return{
+                ...product,
+                 price:numberPrice
+            }
+        })
+        return{
+        ...result,
+        products:modifiedProducts
+        }
+    }
+     )
+
+     return modifiedCategories
     } catch (error) {
         console.error("There was an errior fetching categories" + error)
     }
