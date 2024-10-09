@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Category, Image as ImageType, Size } from "@prisma/client"
 
 export type Product ={
@@ -5,7 +6,6 @@ export type Product ={
     name:string,
     price:number,
     description:string,
-    category:Category,
     size:Size,
     color:string,
     images:ImageType[],
