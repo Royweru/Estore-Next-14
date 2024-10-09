@@ -1,13 +1,12 @@
-import { Image, Product } from "@prisma/client";
+
 import React from "react";
-import { ProductCard } from "./product-card";
+
 import { SectionHeader } from "./section-header";
 import { CardProduct } from "./card-product";
 
 interface ShowcaseProps {
-  data: (Product & {
-    images: Image[];
-  })[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any[]
   header: string;
   sub?: string;
 }

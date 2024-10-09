@@ -6,23 +6,24 @@ export const GetCategories =async () => {
         include:{
             products:{
                 include:{
-                    images:true
+                    images:true,
+                    size:true,
                 }
             }
         }
     })
-     const modifiedCategories  =res.map((result)=>{
-       const modifiedProducts =  result.products.map((product)=>{
+     const modifiedCategories  =res.map((category)=>{
+
+       const modifiedProducts =  category.products.map((product)=>{
             const numberPrice = product.price.toNumber()
             return{
                 ...product,
                  price:numberPrice
-            }
-        })
-        return{
-        ...result,
+            }  })
+     return {
+        ...category,
         products:modifiedProducts
-        }
+     }
     }
      )
 
