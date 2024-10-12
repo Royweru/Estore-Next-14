@@ -6,7 +6,7 @@ const SearchLayout = ({children}:{
 }) => {
   return (
     <>
-      <FiltersSidebar className=' h-full lg:flex hidden bg-transparent fixed top-18 left-0'/>
+      <FiltersSidebar className=' h-full lg:flex hidden bg-transparent lg:fixed top-18 left-0'/>
       <div className=' min-h-screen relative lg:pl-[250px] pl-0'>
       {children}
       </div>

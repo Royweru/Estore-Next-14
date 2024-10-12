@@ -10,7 +10,7 @@ export const FiltersSidebar = async({className}:{
     <div className={cn(' lg:w-[250px] relative',
         className
     )}>
-        <div className=' relative '>
+        <div className=' relative w-full h-full'>
            <SizeFilterBox sizes = {sizes}/>
         </div>
     </div>

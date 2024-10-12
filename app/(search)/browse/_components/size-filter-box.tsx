@@ -15,7 +15,8 @@ export const SizeFilterBox = (
           <div 
            key={size.id}
           className=" p-4 flex items-center justify-center 
-          text-lg font-bold  font-mono bg-neutral-black">
+          text-lg font-bold  font-mono bg-neutral-black  cursor-pointer
+           hover:opacity-85">
                <p className=" text-white">
                 {size.value}
                </p>
