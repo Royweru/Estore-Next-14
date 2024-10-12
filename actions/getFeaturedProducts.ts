@@ -11,11 +11,19 @@ export const GetFeaturedProducts = async () => {
             },
             include:{
                 category:true,
-                size:true
+                size:true,
+                images:true
             }
         })
+        const modidfiedRes = res.map((product)=>{
+            const modifiedPrice = product.price.toNumber()
+            return {
+                ...product,
+                price:modifiedPrice
+            }
 
-        return res
+        })
+       return modidfiedRes
     } catch (error) {
         console.log("Error fetching featured products"+ error)
         return null
