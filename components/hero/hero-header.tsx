@@ -43,7 +43,7 @@ export const HeroHeader = (props: Header79Props) => {
               </h1>
               <p className="text-text-alternative md:text-md text-sm font-light">{description}</p>
               <div className="mt-4 flex items-center justify-center  w-full max-w-lg md:mt-6">
-                 <CtaButton label="Learn more" />
+                 <a href="/browse"><CtaButton label="Browse" /></a>
               </div>
             </div>
           </div>

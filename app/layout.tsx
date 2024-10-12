@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Navbar } from "@/components/nav";
+import { Toaster } from "@/components/ui/sonner";
 
 
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>

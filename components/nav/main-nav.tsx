@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {  useMediaQuery } from "@relume_io/relume-ui";
+import { useMediaQuery } from "@relume_io/relume-ui";
 import { Button } from "../ui/button";
 import type { ButtonProps } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
@@ -16,6 +16,7 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 type ImageProps = {
   url?: string;
@@ -46,7 +47,7 @@ export const MainNav = (props: Navbar2Props) => {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isMobile = useMediaQuery("(max-width: 991px)");
-
+  const router = useRouter();
   return (
     <nav className="flex w-full items-center border-b border-pallete-beige bg-pallete-beige lg:min-h-18 lg:px-[5%]">
       <div className="mx-auto size-full lg:grid lg:grid-cols-[0.375fr_1fr_0.375fr] lg:items-center lg:justify-between lg:gap-4">
@@ -163,10 +164,11 @@ export const MainNav = (props: Navbar2Props) => {
                   </Button>
                 </SignUpButton>
                 <SignInButton mode="modal">
-                  <Button variant="link"
-                   className=" text-black font-semibold"
-                   size="lg"
-                   >
+                  <Button
+                    variant="link"
+                    className=" text-black font-semibold"
+                    size="lg"
+                  >
                     Sign In
                   </Button>
                 </SignInButton>
@@ -178,10 +180,10 @@ export const MainNav = (props: Navbar2Props) => {
               <Button
                 variant={"ghost"}
                 size={"icon"}
+                onClick={() => router.push("/cart")}
               >
-              <ShoppingCartIcon className=" size-5 text-text-primary" />
+                <ShoppingCartIcon className=" size-5 text-text-primary" />
               </Button>
-              
             </ClerkLoaded>
           </div>
         </div>

@@ -1,7 +1,7 @@
 "use client";
 import { useCart } from "@/hooks/use-cart";
 import { Product } from "@/types";
-import { Category, Image as ImageType } from "@prisma/client";
+import { Category, Image as ImageType, Size } from "@prisma/client";
 import { ShoppingCartIcon } from "lucide-react";
 import Image from "next/image";
 import React, { ButtonHTMLAttributes } from "react";
@@ -14,7 +14,8 @@ export const ProductCard = ({
 }: {
   data: Product & {
     images: ImageType[];
-    category?: Category; // Assuming you have a rating field in your product model
+    category?: Category; 
+    size:Size// Assuming you have a rating field in your product model
   };
   rating: number;
   categoryName?:string
@@ -38,10 +39,11 @@ export const ProductCard = ({
 
   const onAddCart = async (e:React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
+    addItem(data)
 
   };
   const handleClick = () => {
-
+   
   };
 
   return (
