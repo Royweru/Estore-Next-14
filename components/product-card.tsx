@@ -1,20 +1,25 @@
 "use client";
+import { useCart } from "@/hooks/use-cart";
 import { Product } from "@/types";
 import { Category, Image as ImageType } from "@prisma/client";
 import { ShoppingCartIcon } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { ButtonHTMLAttributes } from "react";
 import { FaStar } from "react-icons/fa"; // For the star rating
 
 export const ProductCard = ({
-  data,rating
+  data,
+  rating,
+  categoryName
 }: {
-  data:Product  & {
+  data: Product & {
     images: ImageType[];
-    category: Category; // Assuming you have a rating field in your product model
+    category?: Category; // Assuming you have a rating field in your product model
   };
-  rating:number
+  rating: number;
+  categoryName?:string
 }) => {
+  const {addItem,removeItem,removeAll} = useCart()
   // Function to render stars based on product rating
   const renderStars = (rating: number) => {
     const stars = [];
@@ -31,14 +36,22 @@ export const ProductCard = ({
     return stars;
   };
 
+  const onAddCart = async (e:React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+
+  };
+  const handleClick = () => {
+
+  };
+
   return (
     <div
-      className="col-span-1 cursor-pointer bg-transparent  rounded-lg overflow-hidden transition-transform hover:scale-105"
-      onClick={() => {}}
+      className="col-span-1 cursor-pointer bg-transparent  rounded-lg overflow-hidden transition-transform "
+      onClick={handleClick}
     >
       <div className="flex flex-col gap-y-3 relative w-full p-4">
         {/* Image container */}
-        <div className="w-full lg:h-[250px] md:h-[220px] h-[200px] rounded-lg relative group">
+        <div className="w-full md:h-[200px] h-[200px] rounded-lg relative group">
           <Image
             fill
             src={data.images[0]?.url}
@@ -57,7 +70,7 @@ export const ProductCard = ({
         <div className="w-full flex flex-col space-y-2 items-start">
           {/* Category */}
           <div className="font-light text-neutral-600 text-sm italic">
-            <p>{data.category.name}</p>
+            <p>{data.category?.name || categoryName}</p>
           </div>
 
           {/* Product Name */}
@@ -83,9 +96,12 @@ export const ProductCard = ({
           </div>
 
           {/* Action Button (Optional, can be customized) */}
-          <button className="bg-pallete-red text-white px-3 py-1 rounded-md mt-2 
-          hover:bg-pallete-red/85 transition-all flex items-center gap-x-3">
-            <ShoppingCartIcon  className=" size-5 text-brand-white"/>
+          <button
+            className="bg-pallete-red text-white px-3 py-1 rounded-md mt-2 
+          hover:bg-pallete-red/85 transition-all flex items-center gap-x-3"
+          onClick={onAddCart}
+          >
+            <ShoppingCartIcon className=" size-5 text-brand-white" />
             Add to Cart
           </button>
         </div>

@@ -14,7 +14,7 @@ export const CatgeoryGrid = ({
   return (
     <div
       className={`relative bg-cover bg-center min-h-[250px] md:min-h-[300px] col-span-1 cursor-pointer
-      rounded-lg overflow-hidden shadow-lg   group/bento   ${className}`}
+      rounded-lg overflow-hidden shadow-lg   group/bento hover:scale-105   ${className}`}
       style={{ backgroundImage: `url(${category?.products[0].images[0].url})` }}
     >
       <div className="absolute inset-0  bg-black bg-opacity-40 flex flex-col items-start gapy-y-2 justify-end pl-2">

@@ -1,16 +1,20 @@
-import db from '@/lib/db'
+import db from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-export async function GET(
-  req: Request
-) {
+export async function GET(req: Request) {
   try {
-    const { userId } = await auth();
-    if (!userId) return new NextResponse("Unauthorized");
+    const { searchParams } = new URL(req.url);
+    const categoryId = searchParams.get("categoryId") || undefined;
+    const sizeId = searchParams.get("sizeId") || undefined;
+
     const res = await db.product.findMany({
+      where: {
+        categoryId,
+        sizeId,
+      },
       include: {
-        images:true
+        images: true,
       },
     });
     return NextResponse.json(res);
@@ -25,7 +29,7 @@ export async function POST(req: Request) {
   if (!userId) return new NextResponse("Unauthorized");
   const body = await req.json();
 
-  const{
+  const {
     categoryId,
     sizeId,
     isFeatured,
@@ -33,33 +37,32 @@ export async function POST(req: Request) {
     color,
     description,
     price,
-    name
-  } = body
+    name,
+  } = body;
 
-
-  if(!categoryId) return new NextResponse("CategoryId is missing")
-  if(!sizeId) return new NextResponse("sizeId is missing")
-  if(!images|| images.length===0) return new NextResponse("Images are missing")
-  if(!description) return new NextResponse("Description is missing")
-  if(!price) return new NextResponse("Price is missing")
+  if (!categoryId) return new NextResponse("CategoryId is missing");
+  if (!sizeId) return new NextResponse("sizeId is missing");
+  if (!images || images.length === 0)
+    return new NextResponse("Images are missing");
+  if (!description) return new NextResponse("Description is missing");
+  if (!price) return new NextResponse("Price is missing");
 
   try {
     const res = await db.product.create({
-      data: { 
+      data: {
         categoryId,
         sizeId,
-        images:{
-            createMany:{
-                data:[...images.map((image:{url:string})=>image)]
-
-            }
+        images: {
+          createMany: {
+            data: [...images.map((image: { url: string }) => image)],
+          },
         },
-        color:color ||"",
+        color: color || "",
         price,
-        isFeatured:isFeatured ? true :false,
+        isFeatured: isFeatured ? true : false,
         name,
-        description
-       },
+        description,
+      },
     });
     return NextResponse.json(res);
   } catch (error) {
