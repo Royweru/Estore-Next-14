@@ -1,5 +1,6 @@
 "use client";
-import { Category, Image as ImageType, Product } from "@prisma/client";
+import { Product } from "@/types";
+import { Category, Image as ImageType } from "@prisma/client";
 import { ShoppingCartIcon } from "lucide-react";
 import Image from "next/image";
 import React from "react";
@@ -8,7 +9,7 @@ import { FaStar } from "react-icons/fa"; // For the star rating
 export const ProductCard = ({
   data,rating
 }: {
-  data: Product & {
+  data:Product  & {
     images: ImageType[];
     category: Category; // Assuming you have a rating field in your product model
   };

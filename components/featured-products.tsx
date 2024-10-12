@@ -1,7 +1,8 @@
-import { Category, Image as ImageType, Product } from '@prisma/client'
+import { Category, Image as ImageType } from '@prisma/client'
 import React from 'react'
 import { ProductCard } from './product-card'
 import { SectionHeader } from './section-header'
+import { Product } from '@/types'
 
 export const FeaturedProducts = ({
   products

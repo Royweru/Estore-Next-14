@@ -1,8 +1,19 @@
 import React from 'react'
 
-const BrowsePage = () => {
+const BrowsePage = ({
+  searchParams
+}:{
+  searchParams:{
+    categoryId?:string,
+    sizeId?:string
+  }
+}) => {
   return (
-    <div>BrowsePage</div>
+    <div>
+      BrowsePage:
+      {searchParams.sizeId},
+      {searchParams.categoryId}
+    </div>
   )
 }
 
