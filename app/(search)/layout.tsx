@@ -1,5 +1,5 @@
 import React from 'react'
-import { FiltersSidebar } from './_components/filters-sidebar'
+import { FiltersSidebar } from './browse/_components/filters-sidebar'
 
 const SearchLayout = ({children}:{
     children:React.ReactNode
