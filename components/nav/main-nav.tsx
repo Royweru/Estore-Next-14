@@ -17,6 +17,7 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import { useCart } from "@/hooks/use-cart";
 
 type ImageProps = {
   url?: string;
@@ -45,6 +46,7 @@ export const MainNav = (props: Navbar2Props) => {
     ...props,
   } as Props;
 
+  const {items} = useCart()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isMobile = useMediaQuery("(max-width: 991px)");
   const router = useRouter();
@@ -181,8 +183,13 @@ export const MainNav = (props: Navbar2Props) => {
                 variant={"ghost"}
                 size={"icon"}
                 onClick={() => router.push("/cart")}
+                className=" relative"
               >
                 <ShoppingCartIcon className=" size-5 text-text-primary" />
+                <div className=" size-5 justify-center absolute top-0 right-0 font-mono
+                 items-center flex bg-white text-pallete-orange rounded-full ">
+                    {items.length}
+                </div>
               </Button>
             </ClerkLoaded>
           </div>
