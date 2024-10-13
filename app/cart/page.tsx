@@ -12,7 +12,7 @@ const CartPage = () => {
     return accumulator + currentValue.price;
   }, 0);
 
-  const sum =   totalPrice + 1400 +0
+  const sum = totalPrice + 0 + 0;
   return (
     <div className="min-h-screen w-full p-4 md:p-12 lg:p-16 grid md:grid-cols-10 grid-cols-4 lg:grid-cols-12 gap-3 md:gap-2 lg:gap-1.5">
       {items.length > 0 ? (
@@ -71,22 +71,21 @@ const CartPage = () => {
           </div>
 
           <div className=" col-span-4 bg-neutral-200/75 min-h-[250px]  my-3 rounded  flex flex-col justify-between p-5">
-            
             <div className=" flex flex-col gap-y-6">
-            <h2 className=" text-xl lg:text-2xl font-bold text-pallete-orange text-center">
-              Order Summary
-            </h2>
+              <h2 className=" text-xl lg:text-2xl font-bold text-pallete-orange text-center">
+                Order Summary
+              </h2>
 
               <div className=" relative w-full px-2 flex items-center justify-between  border-b border-neutral-600/75 py-4">
                 <p className=" font-normal text-xl ">Subtotal :</p>
                 <span className=" font-mono text-md font-normal text-black">
-                  {totalPrice.toLocaleString('en')}
+                  {totalPrice.toLocaleString("en")}
                 </span>
               </div>
               <div className=" relative w-full px-2 flex items-center justify-between  border-b border-neutral-600/75 py-4">
                 <p className=" font-normal text-xl ">Shipping estimate :</p>
                 <span className=" font-mono text-md font-normal text-black">
-                1,400
+                  0
                 </span>
               </div>
               <div className=" relative w-full px-2 flex items-center justify-between  border-b border-neutral-600/75 py-4">
@@ -96,25 +95,33 @@ const CartPage = () => {
                 </span>
               </div>
               <div className=" flex flex-col gap-y-2">
-              <div className=" relative w-full px-2 flex items-center  justify-between">
-                <p className=" font-bold text-xl ">Total price :</p>
-                <span className=" font-mono text-md  font-black text-zinc-900/85 text-black">
-                 {sum.toLocaleString('en')}
-                </span>
-              </div>
-              <Button className=" w-full font-semibold
-               text-pallete-red" variant="secondary" 
-              >
+                <div className=" relative w-full px-2 flex items-center  justify-between">
+                  <p className=" font-bold text-xl ">Total price :</p>
+                  <span className=" font-mono text-md  font-black text-zinc-900/85 text-black">
+                    {sum.toLocaleString("en")}
+                  </span>
+                </div>
+                <Button
+                  className=" w-full font-semibold
+               text-pallete-red"
+                  variant="secondary"
+                  onClick={()=>{}}
+                >
                   Proceed to checkout
-              </Button>
+                </Button>
               </div>
-            
-
             </div>
           </div>
         </>
       ) : (
-        <p className="text-gray-600 text-center text-xl">Your cart is empty</p>
+        <p className="text-gray-600 text-center text-xl col-span-4 font-black">
+          Your cart is empty
+          <a href="/">
+            <Button variant="link" className=" font-bold text-pallete-orange">
+              Head back to homepage
+            </Button>
+          </a>
+        </p>
       )}
     </div>
   );
