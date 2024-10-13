@@ -274,9 +274,9 @@ export const Navbar2Defaults: Navbar2Props = {
       url: "#",
       subMenuLinks: [
         { title: "All", url: "/browse" },
-        { title: "T-shirts", url: "#" },
-        { title: "Hoodies", url: "#" },
-        { title: "Toppers", url: "#" },
+        { title: "T-shirts", url: "/browse?categoryId=e8c5a9a0-f527-49b0-a2a3-839b930622ce" },
+        { title: "Hoodies", url: "/browse?categoryId=be3fbdb3-5634-4253-96c2-16c88e148c40" },
+        { title: "Toppers", url: "/browse?categoryId=9bbd3ea2-d927-454c-93f1-cda953677ca4" },
       ],
     },
     { title: "About", url: "/about" },

@@ -20,7 +20,7 @@ export const SizeFilterBox = ({ sizes }: { sizes: Size[] }) => {
 
     const pushUrl = qs.stringifyUrl(
       {
-        url: `${window.location.href}`,
+        url: `/browse`,
         query: updatedQuery,
       },
       {

@@ -17,7 +17,7 @@ export const CategoriesFilter =({categories}:{
     const searchParams = useSearchParams();
   const router = useRouter();
   const onClick = async (id: string) => {
-    let query: any = {};
+    let query = {};
     
     if (searchParams) {
       query = qs.parse(searchParams.toString());
@@ -30,7 +30,7 @@ export const CategoriesFilter =({categories}:{
 
     const pushUrl = qs.stringifyUrl(
       {
-        url: `${window.location.href}`,
+        url: `/browse`,
         query: updatedQuery,
       },
       {

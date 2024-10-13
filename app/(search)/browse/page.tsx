@@ -1,6 +1,5 @@
-import axios from "axios";
+
 import React from "react";
-import qs from "query-string";
 import { GetProducts } from "@/actions/getProducts";
 import { GridDisplay } from "./_components/grid-display";
 import { ShowFilter } from "./_components/show-fillter";
