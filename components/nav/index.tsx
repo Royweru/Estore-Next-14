@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { NavHeader } from './nav-header'
+
 import { MainNav } from './main-nav'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'

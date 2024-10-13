@@ -1,10 +1,10 @@
 "use client";
 import { useCart } from "@/hooks/use-cart";
+import { useProductModal } from "@/hooks/use-product-modal";
 import { Product } from "@/types";
 import { Category, Image as ImageType, Size } from "@prisma/client";
 import { ShoppingCartIcon } from "lucide-react";
 import Image from "next/image";
-import React, { ButtonHTMLAttributes } from "react";
 import { FaStar } from "react-icons/fa"; // For the star rating
 
 export const ProductCard = ({
@@ -20,7 +20,8 @@ export const ProductCard = ({
   rating: number;
   categoryName?:string
 }) => {
-  const {addItem,removeItem,removeAll} = useCart()
+  const {addItem} = useCart()
+  const {onOpen} = useProductModal()
   // Function to render stars based on product rating
   const renderStars = (rating: number) => {
     const stars = [];
@@ -43,7 +44,7 @@ export const ProductCard = ({
 
   };
   const handleClick = () => {
-   
+    onOpen(data)
   };
 
   return (

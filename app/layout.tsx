@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Navbar } from "@/components/nav";
 import { Toaster } from "@/components/ui/sonner";
+import { ModalProvider } from "@/components/modals/modal-provider";
 
 
 
@@ -23,6 +24,7 @@ export default function RootLayout({
         <body
           className={` antialiased`}
         >
+          <ModalProvider/>
           <Navbar />
           {children}
           <Toaster />
