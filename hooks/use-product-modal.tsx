@@ -18,13 +18,13 @@ interface productModalStore {
         images: Image[];
         size: Size;
       })
-    | undefined;
+   ;
 }
 
 export const useProductModal = create<productModalStore>((set) => ({
   isOpen: false,
   onOpen: (
-    data: Product & {
+    data?: Product & {
       category?: Category;
       images: Image[];
       size: Size;

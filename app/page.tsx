@@ -1,6 +1,7 @@
 import { GetCategories } from "@/actions/getCategories";
 import { GetFeaturedProducts } from "@/actions/getFeaturedProducts";
 import { FeaturedProducts } from "@/components/featured-products";
+import { Footer } from "@/components/footer";
 
 import { Hero } from "@/components/hero";
 import { PopularCategories } from "@/components/popular-categories";
@@ -13,9 +14,9 @@ export default async function Home() {
  const featuredProducts = await GetFeaturedProducts()
   // const HotClassics = categories[0];
   // const newArrrivals = categories[1];
-  const Tshirts = categories[2];
+  // const Tshirts = categories[2];
   // //  const Toppers = categories[3]
-  // const Hoodies = categories[4];
+  const Hoodies = categories[4];
   return (
     <>
       <Hero />
@@ -23,11 +24,12 @@ export default async function Home() {
       <PopularCategories categories={categories}/>
       <FeaturedProducts products={featuredProducts} />
       <Showcase
-       data={Tshirts.products} 
-      header="Out of this world Tshirts" 
+       data={Hoodies.products} 
+      header="Out of this world Hoodies" 
       sub="Purchase a T-shirt right now at offer and 50% discount"
-      categoryName={Tshirts.name}
+      categoryName={Hoodies.name}
       />
+     <Footer />
     </>
   );
 }
