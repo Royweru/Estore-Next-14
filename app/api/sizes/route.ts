@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs/server"
 import { NextResponse } from "next/server"
 
 export async function GET(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     req:Request,
 
 ) {

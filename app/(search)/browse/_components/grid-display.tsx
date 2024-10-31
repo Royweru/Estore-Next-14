@@ -13,7 +13,7 @@ export const GridDisplay = ({
     })[]
 }) => {
   return (
-    <div className=' w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+    <div className=' w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-2 sm:gap-1 lg:gap-3 '>
         {products.map((product)=>(
             <ProductCard
              key={product.id}

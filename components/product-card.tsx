@@ -54,7 +54,7 @@ export const ProductCard = ({
     >
       <div className="flex flex-col gap-y-3 relative w-full p-4">
         {/* Image container */}
-        <div className="w-full md:h-[200px] h-[200px] rounded-lg relative group">
+        <div className="w-full md:h-[220px] h-[280px] rounded-lg relative group">
           <Image
             fill
             src={data.images[0]?.url}

@@ -2,35 +2,36 @@
 
 import { Size } from "@prisma/client";
 import { useRouter, useSearchParams } from "next/navigation";
+
 import qs from "query-string";
+
 export const SizeFilterBox = ({ sizes }: { sizes: Size[] }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
+
   const onClick = async (id: string) => {
-    let query = {};
-    if (searchParams) {
-      query = qs.parse(searchParams.toString());
-    }
-    const updatedQuery = {
-      ...query,
-      sizeId: id,
-    };
+    let query = {}
+  
+    if(searchParams) query = qs.parse(searchParams.toString())
 
-    if(searchParams.get("sizeId")===id) delete updatedQuery.sizeId
+  const updatedQuery = {
+    ...query,
+    sizeId:id
+  }
 
-    const pushUrl = qs.stringifyUrl(
-      {
-        url: `/browse`,
-        query: updatedQuery,
-      },
-      {
-        
-        skipNull: true,
-      }
-    );
+  if(searchParams.get('sizeId')===id ) delete updatedQuery.sizeId
 
-    router.push(pushUrl);
+  const pushUrl = qs.stringifyUrl({
+    url:'/browse', //the current page you want to stringify,
+    query:updatedQuery
+  },{
+    skipNull:true,
+    skipEmptyString:true
+  })
+
+  router.push(pushUrl)
   };
+
   return (
     <div
       className=" p-1 m-1 grid md:grid-cols-2 lg:grid-cols-3 md:max-w-[200px] mr-auto lg:max-w-[250px]

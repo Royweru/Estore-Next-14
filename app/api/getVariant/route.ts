@@ -1,13 +1,14 @@
-import { lemonSqueezyApiInstance } from "@/lib/lemonAxios";
+import { lemonSqueezyApiInstance } from "@/utils/axios";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   try {
     const body = await req.json();
-    
+    const {productId } = body
+    if(!productId) return new NextResponse("Product id is missing",{status:401})
     if (!body.variantId) return new NextResponse("Variant Id is needed");
     const res = await lemonSqueezyApiInstance.get(
-      `/variants/${body.variantId}`
+      `/variants?filter[product_id]=${body.productId}`
     );
     console.log(res.data);
 

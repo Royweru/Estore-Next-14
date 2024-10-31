@@ -1,13 +1,18 @@
-import { lemonSqueezyApiInstance } from "@/lib/lemonAxios";
+
+import { lemonSqueezyApiInstance } from "@/utils/axios";
 import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(
+  req: Request
+) {
   try {
     const reqData = await req.json();
-    console.log(reqData)
+ 
     const{userId} =auth()
-
+    if(!userId)  redirect("/sign-in")
+    
     if (!reqData.productId)
       return NextResponse.json("ProductId is required", { status: 400 });
 

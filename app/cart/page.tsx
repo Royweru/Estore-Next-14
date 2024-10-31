@@ -1,20 +1,38 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/use-cart";
+import axios from "axios";
 import { Check, XIcon } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import { toast } from "sonner";
 
 const CartPage = () => {
+  
   const { items, removeItem } = useCart();
 
   const totalPrice = items.reduce((accumulator, currentValue) => {
     return accumulator + currentValue.price;
   }, 0);
 
+  const buyProduct = async () => {
+  try {
+
+     const response = await axios.post('/api/purchaseProduct',{
+      productId:'523293'
+     })
+     
+     window.open(response.data,"_blank")
+  } catch (error) {
+     console.error(error)
+     toast.error("Something went wrong while proceeding to check out")
+  }
+  }
+
   const sum = totalPrice + 0 + 0;
   return (
-    <div className="min-h-screen w-full p-4 md:p-12 lg:p-16 grid md:grid-cols-10 grid-cols-4 lg:grid-cols-12 gap-3 md:gap-2 lg:gap-1.5">
+    <div className="min-h-screen  w-full p-4 md:p-12 lg:p-16 grid md:grid-cols-10 grid-cols-4 lg:grid-cols-12 gap-3 md:gap-2 lg:gap-1.5">
       {items.length > 0 ? (
         <>
           <div className=" flex flex-col gap-y-2 h-full col-span-4 md:col-span-6 lg:col-span-8">
@@ -105,7 +123,7 @@ const CartPage = () => {
                   className=" w-full font-semibold
                text-pallete-red"
                   variant="secondary"
-                  onClick={()=>{}}
+                  onClick={buyProduct}
                 >
                   Proceed to checkout
                 </Button>
